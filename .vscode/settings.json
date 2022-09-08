@@ -2,6 +2,11 @@
   "idf.adapterTargetName": "esp32c3",
   "idf.flashType": "JTAG",
   "idf.port": "/dev/ttyUSB0",
+  "esp32.port": "-p ${config:idf.port}",
+  // Use board or interface as needed for openocd functionality
+  "esp32.openocd.board":"esp32c3-builtin.cfg",
+  "esp32.openocd.interface":"esp_usb_jtag.cfg",
+  //"esp32.openocd.interface":"esp32_devkitj_v1.cfg", // Espressif JTAG 
 
   // Extension by Seun LanLege
   "actionButtons": {
@@ -11,7 +16,8 @@
     "reloadButton":"♻️", // Custom reload button text or icon (default ↻). null value enables automatic reload on configuration change
         
     // Icons here: https://code.visualstudio.com/api/references/icons-in-labels
-    // -p /dev/ttyUSB0 may need to be changed below to your port
+    // "-p /dev/ttyUSB0" may need to be changed below to your port. Sadly the idf.port
+    // configuration setting can't be read here.
     "commands": [
       {
         "name": "$(circle-filled)Build",
@@ -51,5 +57,8 @@
         "command": "idf.py menuconfig"
       }
     ] 
-  }
+  },
+  "cSpell.words": [
+    "conviniently"
+  ]
 }

@@ -1,14 +1,16 @@
 {
+  // Use ctrl + alt + T to select a task to run
+  // Use ctrl 0 shift + B top build
   "tasks": [
     // Start openocd
     {
       "label": "preRun",
       "type": "shell",
-      "command": "/home/akhe/.espressif/tools/openocd-esp32/v0.11.0-esp32-20220706/openocd-esp32/bin/openocd",
+      "command": "openocd",
       "isShellCommand": true,      
       "args": [
         "-c", "set ESP_RTOS none",
-        "-f", "/home/akhe/.espressif/tools/openocd-esp32/v0.11.0-esp32-20220706/openocd-esp32/share/openocd/scripts/board/esp32c3-builtin.cfg"
+        "-f", "board/${config:esp32.openocd.board}"
       ],
       "isBackground": true
     },
@@ -42,7 +44,7 @@
       "options": {
         "cwd": "${workspaceRoot}",
       },
-      "command": "openocd -f board/esp32c3-builtin.cfg -c \"program_esp build/blink.bin 0x10000 verify exit\" ",
+      "command": "openocd -f board/${config:esp32.openocd.board} -f target/${config:idf.adapterTargetName}.cfg -c \"program_esp build/blink.bin 0x10000 verify exit\" ",
       "problemMatcher": []
     },
     {
@@ -51,7 +53,7 @@
       "options": {
         "cwd": "${workspaceRoot}",
       },
-      "command": "openocd -f interface/ftdi/esp32_devkitj_v1.cfg -f target/esp32.cfg -c \"program_esp build/esp_prog_vscode_debug.bin 0x10000 verify reset exit\" ",
+      "command": "openocd -f interface/ftdi/${config:esp32.openocd.interface}  -f target/${config:idf.adapterTargetName}.cfg -c \"program_esp build/blink.bin 0x10000 verify reset exit\" ",
       "problemMatcher": []
     },
     {
@@ -60,7 +62,7 @@
       "options": {
         "cwd": "${workspaceRoot}",
       },
-      "command": "idf.py flash",
+      "command": "idf.py ${config:esp32.port} flash",
       "problemMatcher": []
     },
     {
@@ -69,7 +71,7 @@
       "options": {
         "cwd": "${workspaceRoot}",
       },
-      "command": "idf.py monitor",
+      "command": "idf.py ${config:esp32.port} monitor",
       "problemMatcher": []
     },
     {
@@ -78,7 +80,7 @@
       "options": {
         "cwd": "${workspaceRoot}",
       },
-      "command": "idf.py flash monitor",
+      "command": "idf.py ${config:esp32.port} flash monitor",
       "problemMatcher": []
     },
     {
