@@ -32,6 +32,20 @@ alias get_idf='. /usr/local/src/esp/esp-idf/export.sh'
 
 Change the path to the path where you have esp-idf installed.
 
+## Start a new project
+
+If you want to start your own project it may be better to start the project in a ned folder and then copy the files for the setup to this project. In this case create a folder and issue
+
+```sh
+get_idf
+idf.py create_project -p - projectname
+```
+
+the necessary files will be created for you. Then copy the files in the .vscode folder to your project and edit the session.json file. You may also create a version.txt file in the root with version information in.
+
+You may also use this project as the base. Then go to the next topic without creating a project.
+
+
 ## Checkout this project
 
 ```sh
@@ -232,8 +246,32 @@ Of of course, again, replace the debug executable (riscv32-esp-elf-gdb) with the
 
 More info is here https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/api-guides/jtag-debugging/using-debugger.html#jtag-debugging-using-debugger-command-line.  Here you also fins ways to start openocd and gdb with idf.py.
 
+## Other tips
 
+Include the path to the idf_folder in the c_cpp_properties.json file typically as below.
 
+```json
+{
+  "configurations": [
+    {
+      "name": "Linux",
+      "includePath": [
+          "${workspaceFolder}/**",
+          "/home/akhe/development/esp/esp-idf/**"
+      ],
+      "defines": [],
+      "compilerPath": "/usr/bin/clang",
+      "cStandard": "c17",
+      "cppStandard": "c++14",
+      "intelliSenseMode": "linux-clang-x64",
+      "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+    }
+  ],
+  "version": 4
+}
+```
+
+Intellisense will now find relevant files when you click on a function mane or similar and press F12.
 
 -----
 -----
