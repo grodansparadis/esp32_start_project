@@ -142,6 +142,8 @@ First make sure that you have set the environment variables with
 get_idf
 ```
 
+https://www.youtube.com/watch?v=N93RvZz6dEc
+
 Then start Visual Studio Code in the project folder with
 
 ```sh
@@ -246,7 +248,21 @@ Of of course, again, replace the debug executable (riscv32-esp-elf-gdb) with the
 
 More info is here https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/api-guides/jtag-debugging/using-debugger.html#jtag-debugging-using-debugger-command-line.  Here you also fins ways to start openocd and gdb with idf.py.
 
-## Other tips
+## Other related notes and tips
+
+Remove **openocd** process between debug session by clicking on the trash can before you start a new session
+
+![](images/remove-process.png)
+
+An alternative to this is to set up the starting of open ocd to be a one time task and remove the *preLaunchTask* from the launch command. Doing this ine can start open ocd on start up and close it when done.
+
+-----
+
+![](images/debug-anyway.png)
+
+The popup that appears is due to the way VS Code runs tasks. This can be ignored it doesn't affect the process. Just click debug anyway.
+
+-----
 
 Include the path to the idf_folder in the c_cpp_properties.json file typically as below.
 

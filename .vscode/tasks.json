@@ -4,15 +4,15 @@
   "tasks": [
     // Start openocd
     {
-      "label": "preRun",
+      "label": "openocd",
       "type": "shell",
+      "isBackground": true,
       "command": "openocd",
-      "isShellCommand": true,      
+      "isShellCommand": true,    
       "args": [
         "-c", "set ESP_RTOS none",
         "-f", "board/${config:esp32.openocd.board}"
-      ],
-      "isBackground": true
+      ]      
     },
     {
       "label": "ESP32: Build Firmware",
