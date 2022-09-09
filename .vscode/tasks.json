@@ -39,12 +39,30 @@
       "problemMatcher": []
     },
     {
-      "label": "ESP32: Flash via OpenOCD (ESP32-JTAG (C3))",
+      "label": "ESP32: Flash app via OpenOCD (ESP32-JTAG (C3))",
       "type": "shell",
       "options": {
         "cwd": "${workspaceRoot}",
       },
-      "command": "openocd -f board/${config:esp32.openocd.board} -f target/${config:idf.adapterTargetName}.cfg -c \"program_esp build/blink.bin 0x10000 verify exit\" ",
+      "command": "openocd -f board/${config:esp32.openocd.board} -c \"program_esp build/blink.bin 0x10000 verify exit\" ",
+      "problemMatcher": []
+    },
+    {
+      "label": "ESP32: Flash partion-table via OpenOCD (ESP32-JTAG (C3))",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceRoot}",
+      },
+      "command": "openocd -f board/${config:esp32.openocd.board} -c \"program_esp build/partition_table/partition-table.bin 0x8000  verify exit\" ",
+      "problemMatcher": []
+    },
+    {
+      "label": "ESP32: Flash bootloader via OpenOCD (ESP32-JTAG (C3))",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceRoot}",
+      },
+      "command": "openocd -f board/${config:esp32.openocd.board} -c \"program_esp build/bootloader/bootloader.bin 0x1000 verify exit\" ",
       "problemMatcher": []
     },
     {

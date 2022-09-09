@@ -9,6 +9,8 @@
       "name": "ESP32 OpenOCD",
       "type": "cppdbg",
       "request": "launch",
+      "MIMode": "gdb",
+      "miDebuggerPath": "${command:espIdf.getXtensaGdb}",
       "cwd": "${workspaceFolder}/build",
       "program": "${workspaceFolder}/build/blink.elf",
       // Absolute path to gdb: /home/akhe/.espressif/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/bin/
@@ -22,7 +24,17 @@
         {"text":"mon program_esp build/partition_table/partition-table.bin 0x8000 verify"},
         {"text":"mon program_esp build/blink.bin 0x10000 verify"},
         {"text":"monitor reset halt"},
+        {"text": "thb app_main" },
         {"text":"flushregs"}
-    }
-  ]
+      ],
+      "externalConsole": false,
+      "logging": {
+        "engineLogging": true
+      },
+      // Possible to add sustom variables here
+      "env": {
+        "CUSTOM_ENV_VAR": "SOME_VALUE"
+      }
+    ]
+  }
 }

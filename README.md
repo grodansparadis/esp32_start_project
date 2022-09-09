@@ -10,6 +10,7 @@ This project contains tasks, settings etc for a ESP32 development project using 
 
 First of all credits where credits are due
 
+  * https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/DEBUGGING.md
   * Yiri R for his excellent Video series on the subject. https://www.youtube.com/c/YuriR
   * The repository at https://github.com/makercrew/esp_prog_vscode_debug by @makecrew
   * other sources.
@@ -249,6 +250,10 @@ Of of course, again, replace the debug executable (riscv32-esp-elf-gdb) with the
 More info is here https://docs.espressif.com/projects/esp-idf/en/latest/esp32c3/api-guides/jtag-debugging/using-debugger.html#jtag-debugging-using-debugger-command-line.  Here you also fins ways to start openocd and gdb with idf.py.
 
 ## Other related notes and tips
+
+  * ctrl + alt + T   - Opens up tasks
+  * shift + ctrl + B - Builds
+----
 
 Remove **openocd** process between debug session by clicking on the trash can before you start a new session
 
