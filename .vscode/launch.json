@@ -11,17 +11,18 @@
       "request": "launch",
       "cwd": "${workspaceFolder}/build",
       "program": "${workspaceFolder}/build/blink.elf",
-      "miDebuggerPath": "/home/akhe/.espressif/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/bin/riscv32-esp-elf-gdb",
+      // Absolute path to gdb: /home/akhe/.espressif/tools/riscv32-esp-elf/esp-2022r1-11.2.0/riscv32-esp-elf/bin/
+      "miDebuggerPath": "${config:esp32.debugger}",
       "setupCommands": [
         {"text":"target remote 127.0.0.1:3333"},
         {"text":"set remote hardware-watchpoint-limit 2"},
         {"text":"monitor reset halt"},
         {"text":"flushregs"},
         //{"text":"mon program_esp build/bootloader/bootloader.bin 0x1000 verify"},
-        //{"text":"mon program_esp build/partition_table/partition-table.bin 0x8000 verify"},
-        //{"text":"mon program_esp build/blink.bin 0x10000 verify"},
-        //{"text":"monitor reset halt"},
-        //{"text":"flushregs"}
+        {"text":"mon program_esp build/partition_table/partition-table.bin 0x8000 verify"},
+        {"text":"mon program_esp build/blink.bin 0x10000 verify"},
+        {"text":"monitor reset halt"},
+        {"text":"flushregs"}
       ]
     }
   ]

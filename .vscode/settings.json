@@ -7,6 +7,10 @@
   "esp32.openocd.board":"esp32c3-builtin.cfg",
   "esp32.openocd.interface":"esp_usb_jtag.cfg",
   //"esp32.openocd.interface":"esp32_devkitj_v1.cfg", // Espressif JTAG 
+  // The debugger to use (see ~/.espressif/tools/) "xtensa-esp32s2-elf-gdb"
+  // for the esp32-s2 etc
+  "esp32.debugger":"riscv32-esp-elf-gdb",
+  "esp32.firmware":"build/blink.bin",
 
   // Extension by Seun LanLege
   "actionButtons": {
